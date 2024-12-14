@@ -51,7 +51,7 @@ conda create -n h2ogpt -y
 conda activate h2ogpt
 conda install python=3.10 -c conda-forge -y
 
-export CUDA_HOME=/usr/local/cuda-12.1
+export CUDA_HOME=/usr/local/cuda-12.6
 export PIP_EXTRA_INDEX_URL="https://download.pytorch.org/whl/cu121"
 export GGML_CUDA=1
 export CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES=all"
@@ -60,6 +60,7 @@ export FORCE_CMAKE=1
 # get patches
 curl -O  https://h2o-release.s3.amazonaws.com/h2ogpt/run_patches.sh
 curl -O https://h2o-release.s3.amazonaws.com/h2ogpt/trans.patch
+sed -i 's/3412/3891/g' trans.patch
 curl -O https://h2o-release.s3.amazonaws.com/h2ogpt/xtt.patch
 curl -O https://h2o-release.s3.amazonaws.com/h2ogpt/trans2.patch
 curl -O https://h2o-release.s3.amazonaws.com/h2ogpt/google.patch
